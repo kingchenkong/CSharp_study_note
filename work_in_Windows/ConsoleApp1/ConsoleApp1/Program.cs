@@ -3,48 +3,89 @@ using RectangleApplication;
 using System;
 
 
-// hello world
-Console.WriteLine("Hello, World! 2024-0412-0126");
+// // hello world
+// Console.WriteLine("Hello, World! 2024-0412-0126");
 
-string divider = "=========== ";
+// string divider = "=========== ";
 
-// Rectangle demo
-Console.WriteLine(divider + "Rectangle demo");
+// // Rectangle demo
+// Console.WriteLine(divider + "Rectangle demo");
 
-RectangleApplication.Rectangle rec = new();
-rec.Acceptdetails();
-rec.Display();
+// RectangleApplication.Rectangle rec = new();
+// rec.Acceptdetails();
+// rec.Display();
 
-RectangleApplication.ExecuteRectangle excute = new();
-excute.main();
+// RectangleApplication.ExecuteRectangle excute = new();
+// excute.main();
 
-// Value demo
-Console.WriteLine(divider + "Value demo");
-ValueType.ValueArguments val = new();
-val.Printer();
+// // Value demo
+// Console.WriteLine(divider + "Value demo");
+// ValueType.ValueArguments val = new();
+// val.Printer();
 
-// Loop demo
-Console.WriteLine(divider + "Loop demo");
-LoopDemo.Looper.Execute();
+// // Loop demo
+// Console.WriteLine(divider + "Loop demo");
+// LoopDemo.Looper.Execute();
 
-// Recursion demo
-Console.WriteLine(divider + "Recursion demo");
+// // Recursion demo
+// Console.WriteLine(divider + "Recursion demo");
 
-Console.WriteLine("Factorial - Enumerable.Range(1, 10)");
-foreach (int index in Enumerable.Range(1, 10))
+// Console.WriteLine("Factorial - Enumerable.Range(1, 10)");
+// foreach (int index in Enumerable.Range(1, 10))
+// {
+//     Console.WriteLine("Factorial({0}) = {1}", index, RecursionDemo.RecursionClass.Factorial(index));
+// }
+
+// Console.WriteLine("Fibonacci - Enumerable.Range(1, 10)");
+// foreach (int index in Enumerable.Range(1, 10))
+// {
+//     Console.WriteLine("Fibonacci({0}) = {1}", index, RecursionDemo.RecursionClass.Fibonacci(index));
+// }
+
+// // Nullable demo
+// Console.WriteLine(divider + "Nullable demo");
+// NullableDemo.Nullables.Main();
+
+// leetcode demo
+int[] nums = {111, 333, 2, 7, 11, 15 };
+int tartget = 9;
+
+int[] res = LeetcodeDemo.TwoSumClass.TwoSum(nums, tartget);
+Console.WriteLine($"res[{res[0]}, {res[1]}]");
+
+namespace LeetcodeDemo
 {
-    Console.WriteLine("Factorial({0}) = {1}", index, RecursionDemo.RecursionClass.Factorial(index));
-}
+    public class TwoSumClass
+    {
+        public static int[] TwoSum(int[] nums, int target)
+        {
+            Dictionary<int, int> discovered = new();
+            for (int i = 0; i < nums.Length; i++)
+            {
+                int numToFind = target - nums[i];
+                // Console.WriteLine(numToFind.ToString());
 
-Console.WriteLine("Fibonacci - Enumerable.Range(1, 10)");
-foreach (int index in Enumerable.Range(1, 10))
-{
-    Console.WriteLine("Fibonacci({0}) = {1}", index, RecursionDemo.RecursionClass.Fibonacci(index));
-}
+                // foreach (var kvp in discovered)
+                // {
+                //     Console.WriteLine($"discovered => {kvp.Key}: {kvp.Value}");
+                // }
 
-// Nullable demo
-Console.WriteLine(divider + "Nullable demo");
-NullableDemo.Nullables.Main();
+                // Console.WriteLine(discovered.ContainsKey(numToFind));
+                if (!discovered.ContainsKey(numToFind))
+                {
+                    discovered[nums[i]] = i;
+                }
+                else
+                {
+                    int[] res = { discovered[numToFind], i };
+                    return res;
+                }
+            }
+            return Array.Empty<int>();
+        }
+
+    }
+}
 
 
 namespace RectangleApplication
